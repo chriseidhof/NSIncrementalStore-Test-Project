@@ -26,6 +26,15 @@
 		8359A93C14E9551200FBA59F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A90F14E9551200FBA59F /* Foundation.framework */; };
 		8359A94414E9551200FBA59F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8359A94214E9551200FBA59F /* InfoPlist.strings */; };
 		8359A94714E9551200FBA59F /* IncrementalStoreTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A94614E9551200FBA59F /* IncrementalStoreTestTests.m */; };
+		8359A95214E9554C00FBA59F /* BandCampIS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A95114E9554C00FBA59F /* BandCampIS.m */; };
+		8359A96414E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */; };
+		8359A96514E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */; };
+		8359A96714E95A6600FBA59F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A96614E95A6600FBA59F /* CoreData.framework */; };
+		8359A96814E95AA100FBA59F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A96614E95A6600FBA59F /* CoreData.framework */; };
+		8359A97714E9831700FBA59F /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97614E9831700FBA59F /* Album.m */; };
+		8359A97814E9831700FBA59F /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97614E9831700FBA59F /* Album.m */; };
+		8359A97B14E9833F00FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97A14E9833F00FBA59F /* Band.m */; };
+		8359A97C14E9833F00FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97A14E9833F00FBA59F /* Band.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,17 +52,17 @@
 		8359A90D14E9551200FBA59F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8359A90F14E9551200FBA59F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8359A91114E9551200FBA59F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8359A91514E9551200FBA59F /* IncrementalStoreTest-Info.plist */ = {isa = PBXFileReference; path = "IncrementalStoreTest-Info.plist"; sourceTree = "<group>"; };
+		8359A91514E9551200FBA59F /* IncrementalStoreTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IncrementalStoreTest-Info.plist"; sourceTree = "<group>"; };
 		8359A91714E9551200FBA59F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8359A91914E9551200FBA59F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8359A91B14E9551200FBA59F /* IncrementalStoreTest-Prefix.pch */ = {isa = PBXFileReference; path = "IncrementalStoreTest-Prefix.pch"; sourceTree = "<group>"; };
-		8359A91C14E9551200FBA59F /* CEAppDelegate.h */ = {isa = PBXFileReference; path = CEAppDelegate.h; sourceTree = "<group>"; };
+		8359A91B14E9551200FBA59F /* IncrementalStoreTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IncrementalStoreTest-Prefix.pch"; sourceTree = "<group>"; };
+		8359A91C14E9551200FBA59F /* CEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEAppDelegate.h; sourceTree = "<group>"; };
 		8359A91D14E9551200FBA59F /* CEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEAppDelegate.m; sourceTree = "<group>"; };
-		8359A91F14E9551200FBA59F /* CEFirstViewController.h */ = {isa = PBXFileReference; path = CEFirstViewController.h; sourceTree = "<group>"; };
+		8359A91F14E9551200FBA59F /* CEFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEFirstViewController.h; sourceTree = "<group>"; };
 		8359A92014E9551200FBA59F /* CEFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEFirstViewController.m; sourceTree = "<group>"; };
 		8359A92214E9551200FBA59F /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		8359A92414E9551200FBA59F /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		8359A92614E9551200FBA59F /* CESecondViewController.h */ = {isa = PBXFileReference; path = CESecondViewController.h; sourceTree = "<group>"; };
+		8359A92614E9551200FBA59F /* CESecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CESecondViewController.h; sourceTree = "<group>"; };
 		8359A92714E9551200FBA59F /* CESecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CESecondViewController.m; sourceTree = "<group>"; };
 		8359A92914E9551200FBA59F /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		8359A92B14E9551200FBA59F /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
@@ -61,10 +70,18 @@
 		8359A93114E9551200FBA59F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CESecondViewController.xib; sourceTree = "<group>"; };
 		8359A93814E9551200FBA59F /* IncrementalStoreTestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncrementalStoreTestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8359A93914E9551200FBA59F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		8359A94114E9551200FBA59F /* IncrementalStoreTestTests-Info.plist */ = {isa = PBXFileReference; path = "IncrementalStoreTestTests-Info.plist"; sourceTree = "<group>"; };
+		8359A94114E9551200FBA59F /* IncrementalStoreTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IncrementalStoreTestTests-Info.plist"; sourceTree = "<group>"; };
 		8359A94314E9551200FBA59F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8359A94514E9551200FBA59F /* IncrementalStoreTestTests.h */ = {isa = PBXFileReference; path = IncrementalStoreTestTests.h; sourceTree = "<group>"; };
+		8359A94514E9551200FBA59F /* IncrementalStoreTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncrementalStoreTestTests.h; sourceTree = "<group>"; };
 		8359A94614E9551200FBA59F /* IncrementalStoreTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncrementalStoreTestTests.m; sourceTree = "<group>"; };
+		8359A95014E9554C00FBA59F /* BandCampIS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandCampIS.h; sourceTree = "<group>"; };
+		8359A95114E9554C00FBA59F /* BandCampIS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandCampIS.m; sourceTree = "<group>"; };
+		8359A96314E959A200FBA59F /* BandCamp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BandCamp.xcdatamodel; sourceTree = "<group>"; };
+		8359A96614E95A6600FBA59F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8359A97514E9831700FBA59F /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Album.h; path = IncrementalStoreTest/Album.h; sourceTree = "<group>"; };
+		8359A97614E9831700FBA59F /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = IncrementalStoreTest/Album.m; sourceTree = "<group>"; };
+		8359A97914E9833F00FBA59F /* Band.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Band.h; path = IncrementalStoreTest/Band.h; sourceTree = "<group>"; };
+		8359A97A14E9833F00FBA59F /* Band.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Band.m; path = IncrementalStoreTest/Band.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8359A96714E95A6600FBA59F /* CoreData.framework in Frameworks */,
 				8359A90E14E9551200FBA59F /* UIKit.framework in Frameworks */,
 				8359A91014E9551200FBA59F /* Foundation.framework in Frameworks */,
 				8359A91214E9551200FBA59F /* CoreGraphics.framework in Frameworks */,
@@ -82,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8359A96814E95AA100FBA59F /* CoreData.framework in Frameworks */,
 				8359A93A14E9551200FBA59F /* SenTestingKit.framework in Frameworks */,
 				8359A93B14E9551200FBA59F /* UIKit.framework in Frameworks */,
 				8359A93C14E9551200FBA59F /* Foundation.framework in Frameworks */,
@@ -94,6 +113,12 @@
 		8359A8FE14E9551100FBA59F = {
 			isa = PBXGroup;
 			children = (
+				8359A97514E9831700FBA59F /* Album.h */,
+				8359A97614E9831700FBA59F /* Album.m */,
+				8359A96614E95A6600FBA59F /* CoreData.framework */,
+				8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */,
+				8359A97914E9833F00FBA59F /* Band.h */,
+				8359A97A14E9833F00FBA59F /* Band.m */,
 				8359A91314E9551200FBA59F /* IncrementalStoreTest */,
 				8359A93F14E9551200FBA59F /* IncrementalStoreTestTests */,
 				8359A90C14E9551200FBA59F /* Frameworks */,
@@ -137,6 +162,8 @@
 				8359A92D14E9551200FBA59F /* CEFirstViewController.xib */,
 				8359A93014E9551200FBA59F /* CESecondViewController.xib */,
 				8359A91414E9551200FBA59F /* Supporting Files */,
+				8359A95014E9554C00FBA59F /* BandCampIS.h */,
+				8359A95114E9554C00FBA59F /* BandCampIS.m */,
 			);
 			path = IncrementalStoreTest;
 			sourceTree = "<group>";
@@ -287,6 +314,10 @@
 				8359A91E14E9551200FBA59F /* CEAppDelegate.m in Sources */,
 				8359A92114E9551200FBA59F /* CEFirstViewController.m in Sources */,
 				8359A92814E9551200FBA59F /* CESecondViewController.m in Sources */,
+				8359A95214E9554C00FBA59F /* BandCampIS.m in Sources */,
+				8359A96414E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */,
+				8359A97714E9831700FBA59F /* Album.m in Sources */,
+				8359A97B14E9833F00FBA59F /* Band.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +326,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8359A94714E9551200FBA59F /* IncrementalStoreTestTests.m in Sources */,
+				8359A96514E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */,
+				8359A97814E9831700FBA59F /* Album.m in Sources */,
+				8359A97C14E9833F00FBA59F /* Band.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +508,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8359A96314E959A200FBA59F /* BandCamp.xcdatamodel */,
+			);
+			currentVersion = 8359A96314E959A200FBA59F /* BandCamp.xcdatamodel */;
+			path = BandCamp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8359A90014E9551100FBA59F /* Project object */;
 }
