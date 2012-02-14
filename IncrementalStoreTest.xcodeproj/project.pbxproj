@@ -33,6 +33,8 @@
 		8359A97F14EA767600FBA59F /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97E14EA767600FBA59F /* Album.m */; };
 		8359A98314EA767600FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98214EA767600FBA59F /* Band.m */; };
 		8359A98714EA767600FBA59F /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98614EA767600FBA59F /* Track.m */; };
+		8359A98C14EA97F400FBA59F /* BandCampAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98B14EA97F400FBA59F /* BandCampAPI.m */; };
+		8359A98D14EA97F400FBA59F /* BandCampAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98B14EA97F400FBA59F /* BandCampAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		8359A98214EA767600FBA59F /* Band.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Band.m; path = IncrementalStoreTest/Band.m; sourceTree = "<group>"; };
 		8359A98514EA767600FBA59F /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = IncrementalStoreTest/Track.h; sourceTree = "<group>"; };
 		8359A98614EA767600FBA59F /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Track.m; path = IncrementalStoreTest/Track.m; sourceTree = "<group>"; };
+		8359A98A14EA97F400FBA59F /* BandCampAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandCampAPI.h; sourceTree = "<group>"; };
+		8359A98B14EA97F400FBA59F /* BandCampAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandCampAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 				8359A91414E9551200FBA59F /* Supporting Files */,
 				8359A95014E9554C00FBA59F /* BandCampIS.h */,
 				8359A95114E9554C00FBA59F /* BandCampIS.m */,
+				8359A98A14EA97F400FBA59F /* BandCampAPI.h */,
+				8359A98B14EA97F400FBA59F /* BandCampAPI.m */,
 			);
 			path = IncrementalStoreTest;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				8359A97F14EA767600FBA59F /* Album.m in Sources */,
 				8359A98314EA767600FBA59F /* Band.m in Sources */,
 				8359A98714EA767600FBA59F /* Track.m in Sources */,
+				8359A98C14EA97F400FBA59F /* BandCampAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8359A94714E9551200FBA59F /* IncrementalStoreTestTests.m in Sources */,
+				8359A98D14EA97F400FBA59F /* BandCampAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
