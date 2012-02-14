@@ -8,7 +8,7 @@
 
 #import <CoreData/CoreData.h>
 
-extern NSString* MY_STORE_TYPE;
+extern NSString* BANDCAMP_STORE_TYPE;
 
 @interface BandCampIS : NSIncrementalStore
 

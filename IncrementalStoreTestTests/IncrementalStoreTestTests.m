@@ -28,23 +28,20 @@
     NSManagedObjectModel* model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
 
     
-    [NSPersistentStoreCoordinator registerStoreClass:[BandCampIS class] forStoreType:MY_STORE_TYPE];
+    [NSPersistentStoreCoordinator registerStoreClass:[BandCampIS class] forStoreType:BANDCAMP_STORE_TYPE];
     NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     NSError* err = nil;
-    NSURL* url = [NSURL URLWithString:@"http://api.bandcamp.com/api/"];
-    [coordinator addPersistentStoreWithType:MY_STORE_TYPE configuration:nil URL:url options:nil error:&err];
+    [coordinator addPersistentStoreWithType:BANDCAMP_STORE_TYPE configuration:nil URL:nil options:nil error:&err];
     moc = [[NSManagedObjectContext alloc] init];
     [moc setPersistentStoreCoordinator:coordinator];
-
-    // Set-up code here.
 }
 
 - (void)tearDown
 {
-    // Tear-down code here.
-    
     [super tearDown];
 }
+
+#pragma mark Convenience methods
 
 - (Band*)rueRoyale {
     NSEntityDescription *entityDescription = [NSEntityDescription
@@ -74,6 +71,8 @@
     return [results lastObject];
     
 }
+
+#pragma mark Tests
 
 - (void)testFetchBandByName
 {
