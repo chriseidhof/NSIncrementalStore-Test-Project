@@ -8,6 +8,7 @@
 
 #import "BandCampIS.h"
 #import "BandCampAPI.h"
+#import "NSArray+Map.h"
 
 NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
 
@@ -65,7 +66,7 @@ NSMutableDictionary* cache;
         }
     }
     
-    NSLog(@"unkonwn request: %@", request);    
+    NSLog(@"unknown request: %@", request);    
     return nil;
 } 
 
@@ -85,24 +86,21 @@ NSMutableDictionary* cache;
 - (id)newValueForRelationship:(NSRelationshipDescription *)relationship forObjectWithID:(NSManagedObjectID *)objectID withContext:(NSManagedObjectContext *)context error:(NSError **)error {
     if([relationship.entity.name isEqualToString:@"Band"]) {
         if ([relationship.name isEqualToString:@"discography"]) {
-            id bandId = [self referenceObjectForObjectID:objectID];
-            NSMutableArray* results = [NSMutableArray array];
-            for(NSDictionary* album in [BandCampAPI apiDiscographyForBandWithId:bandId]) {
-                NSManagedObjectID* oid = [self objectIdForNewObjectOfEntity:relationship.destinationEntity nativeKey:@"album_id" values:album];
-                [results addObject:oid];
-            }
-            return results;
+            id bandId = [self referenceObjectForObjectID:objectID];            
+            NSArray* discographyData = [BandCampAPI apiDiscographyForBandWithId:bandId];
+            return [discographyData map:^(id album) {
+                return [self objectIdForNewObjectOfEntity:relationship.destinationEntity nativeKey:@"album_id" values:album];
+
+            }];
         }
     } else if([relationship.entity.name isEqualToString:@"Album"]) {
         if([relationship.name isEqualToString:@"tracks"]) {
             NSDictionary* values = [cache objectForKey:objectID];
             NSArray* tracks = [values objectForKey:@"tracks"];
-            NSMutableArray* results = [NSMutableArray array];
-            for(NSDictionary* trackData in tracks) {
-                NSManagedObjectID* oid = [self objectIdForNewObjectOfEntity:relationship.destinationEntity nativeKey:@"track_id" values:trackData];
-                [results addObject:oid];
-            }
-            return results;
+            return [tracks map:^(id trackData){
+                return [self objectIdForNewObjectOfEntity:relationship.destinationEntity nativeKey:@"track_id" values:trackData];
+
+            }];
         }
     }
     NSLog(@"relationship for unknown entity: %@", relationship.entity);
@@ -117,10 +115,5 @@ NSMutableDictionary* cache;
     [cache setObject:values forKey:oid];
     return oid;
 }
-
-#pragma mark API methods
-
-
-
 
 @end
