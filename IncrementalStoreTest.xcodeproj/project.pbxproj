@@ -28,13 +28,11 @@
 		8359A94714E9551200FBA59F /* IncrementalStoreTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A94614E9551200FBA59F /* IncrementalStoreTestTests.m */; };
 		8359A95214E9554C00FBA59F /* BandCampIS.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A95114E9554C00FBA59F /* BandCampIS.m */; };
 		8359A96414E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */; };
-		8359A96514E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */; };
 		8359A96714E95A6600FBA59F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A96614E95A6600FBA59F /* CoreData.framework */; };
 		8359A96814E95AA100FBA59F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A96614E95A6600FBA59F /* CoreData.framework */; };
-		8359A97714E9831700FBA59F /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97614E9831700FBA59F /* Album.m */; };
-		8359A97814E9831700FBA59F /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97614E9831700FBA59F /* Album.m */; };
-		8359A97B14E9833F00FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97A14E9833F00FBA59F /* Band.m */; };
-		8359A97C14E9833F00FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97A14E9833F00FBA59F /* Band.m */; };
+		8359A97F14EA767600FBA59F /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A97E14EA767600FBA59F /* Album.m */; };
+		8359A98314EA767600FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98214EA767600FBA59F /* Band.m */; };
+		8359A98714EA767600FBA59F /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98614EA767600FBA59F /* Track.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +76,12 @@
 		8359A95114E9554C00FBA59F /* BandCampIS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandCampIS.m; sourceTree = "<group>"; };
 		8359A96314E959A200FBA59F /* BandCamp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BandCamp.xcdatamodel; sourceTree = "<group>"; };
 		8359A96614E95A6600FBA59F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		8359A97514E9831700FBA59F /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Album.h; path = IncrementalStoreTest/Album.h; sourceTree = "<group>"; };
-		8359A97614E9831700FBA59F /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = IncrementalStoreTest/Album.m; sourceTree = "<group>"; };
-		8359A97914E9833F00FBA59F /* Band.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Band.h; path = IncrementalStoreTest/Band.h; sourceTree = "<group>"; };
-		8359A97A14E9833F00FBA59F /* Band.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Band.m; path = IncrementalStoreTest/Band.m; sourceTree = "<group>"; };
+		8359A97D14EA767500FBA59F /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Album.h; path = IncrementalStoreTest/Album.h; sourceTree = "<group>"; };
+		8359A97E14EA767600FBA59F /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Album.m; path = IncrementalStoreTest/Album.m; sourceTree = "<group>"; };
+		8359A98114EA767600FBA59F /* Band.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Band.h; path = IncrementalStoreTest/Band.h; sourceTree = "<group>"; };
+		8359A98214EA767600FBA59F /* Band.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Band.m; path = IncrementalStoreTest/Band.m; sourceTree = "<group>"; };
+		8359A98514EA767600FBA59F /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = IncrementalStoreTest/Track.h; sourceTree = "<group>"; };
+		8359A98614EA767600FBA59F /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Track.m; path = IncrementalStoreTest/Track.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +113,8 @@
 		8359A8FE14E9551100FBA59F = {
 			isa = PBXGroup;
 			children = (
-				8359A97514E9831700FBA59F /* Album.h */,
-				8359A97614E9831700FBA59F /* Album.m */,
 				8359A96614E95A6600FBA59F /* CoreData.framework */,
-				8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */,
-				8359A97914E9833F00FBA59F /* Band.h */,
-				8359A97A14E9833F00FBA59F /* Band.m */,
+				8359A98914EA768800FBA59F /* Model */,
 				8359A91314E9551200FBA59F /* IncrementalStoreTest */,
 				8359A93F14E9551200FBA59F /* IncrementalStoreTestTests */,
 				8359A90C14E9551200FBA59F /* Frameworks */,
@@ -196,6 +192,20 @@
 				8359A94214E9551200FBA59F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8359A98914EA768800FBA59F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8359A96214E959A200FBA59F /* BandCamp.xcdatamodeld */,
+				8359A97D14EA767500FBA59F /* Album.h */,
+				8359A98114EA767600FBA59F /* Band.h */,
+				8359A98514EA767600FBA59F /* Track.h */,
+				8359A98614EA767600FBA59F /* Track.m */,
+				8359A98214EA767600FBA59F /* Band.m */,
+				8359A97E14EA767600FBA59F /* Album.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,8 +326,9 @@
 				8359A92814E9551200FBA59F /* CESecondViewController.m in Sources */,
 				8359A95214E9554C00FBA59F /* BandCampIS.m in Sources */,
 				8359A96414E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */,
-				8359A97714E9831700FBA59F /* Album.m in Sources */,
-				8359A97B14E9833F00FBA59F /* Band.m in Sources */,
+				8359A97F14EA767600FBA59F /* Album.m in Sources */,
+				8359A98314EA767600FBA59F /* Band.m in Sources */,
+				8359A98714EA767600FBA59F /* Track.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,9 +337,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8359A94714E9551200FBA59F /* IncrementalStoreTestTests.m in Sources */,
-				8359A96514E959A200FBA59F /* BandCamp.xcdatamodeld in Sources */,
-				8359A97814E9831700FBA59F /* Album.m in Sources */,
-				8359A97C14E9833F00FBA59F /* Band.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

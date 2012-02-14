@@ -10,6 +10,7 @@
 #import "BandCampIS.h"
 #import "Band.h"
 #import "Album.h"
+#import "Track.h"
 
 @interface IncrementalStoreTestTests () {
  NSManagedObjectContext* moc;   
@@ -59,6 +60,21 @@
     return band;
 }
 
+- (Album*)illinois
+{
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Album" inManagedObjectContext:moc];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"album_id == %d", 781775666];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entityDescription;
+    fetchRequest.predicate = predicate;
+    
+    NSArray *results = [moc executeFetchRequest:fetchRequest error:nil];
+    return [results lastObject];
+    
+}
+
 - (void)testFetchBandByName
 {
     Band* band = [self rueRoyale];
@@ -73,6 +89,21 @@
        foundGuideToAnEscape = foundGuideToAnEscape || [album.title isEqualToString:@"Guide to an Escape"];
    }
     STAssertTrue(foundGuideToAnEscape, @"One of the albums should be named 'Guide to an Escape'");
+}
+
+- (void)testFetchAlbumByAlbumId {
+    Album* illinois = [self illinois];
+    STAssertEqualObjects(illinois.title, @"Illinois", @"Title should be Illinois");
+}
+
+- (void)testFetchTracks {
+    Album* illinois = [self illinois];
+    STAssertTrue(illinois.tracks.count == 22, @"Should be 22 tracks");
+    BOOL foundChicago = NO;
+    for(Track* track in illinois.tracks) {
+        foundChicago = foundChicago || [track.title isEqualToString:@"Chicago"];
+    }
+    STAssertTrue(foundChicago, @"The track Chicago should be on the album");
 }
 
 @end

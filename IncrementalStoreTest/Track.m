@@ -1,19 +1,19 @@
 //
-//  Album.m
+//  Track.m
 //  IncrementalStoreTest
 //
 //  Created by Chris Eidhof on 2/14/12.
 //  Copyright (c) 2012 Chris Eidhof. All rights reserved.
 //
 
-#import "Album.h"
+#import "Track.h"
 
 
-@implementation Album
+@implementation Track
 
-@dynamic artist;
-@dynamic large_art_url;
+@dynamic track_id;
 @dynamic title;
-@dynamic tracks;
+@dynamic number;
+@dynamic duration;
 
 @end
