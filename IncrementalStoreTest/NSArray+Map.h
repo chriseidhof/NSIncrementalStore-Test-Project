@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id(^MapBlock)(id block);
+typedef id(^MapBlock)(id item);
 
 @interface NSArray (Map)
 

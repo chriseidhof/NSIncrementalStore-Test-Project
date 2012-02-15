@@ -23,6 +23,6 @@
     <elements>
         <element name="Album" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Band" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="Track" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Track" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

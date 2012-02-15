@@ -85,6 +85,7 @@
    Band* band = [self rueRoyale];
    BOOL foundGuideToAnEscape = NO;
    for(Album* album in band.discography) {
+       NSLog(@"title: %@", album.title);
        foundGuideToAnEscape = foundGuideToAnEscape || [album.title isEqualToString:@"Guide to an Escape"];
    }
     STAssertTrue(foundGuideToAnEscape, @"One of the albums should be named 'Guide to an Escape'");

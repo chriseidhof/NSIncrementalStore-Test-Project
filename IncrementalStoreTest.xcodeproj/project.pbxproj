@@ -122,9 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				8359A96614E95A6600FBA59F /* CoreData.framework */,
+				8359A99314EBD62500FBA59F /* Helper Categories */,
+				8359A99214EBD60A00FBA59F /* BandCamp API */,
 				8359A98914EA768800FBA59F /* Model */,
 				8359A91314E9551200FBA59F /* IncrementalStoreTest */,
-				8359A93F14E9551200FBA59F /* IncrementalStoreTestTests */,
+				8359A93F14E9551200FBA59F /* Tests */,
 				8359A90C14E9551200FBA59F /* Frameworks */,
 				8359A90A14E9551200FBA59F /* Products */,
 			);
@@ -166,12 +168,6 @@
 				8359A92D14E9551200FBA59F /* CEFirstViewController.xib */,
 				8359A93014E9551200FBA59F /* CESecondViewController.xib */,
 				8359A91414E9551200FBA59F /* Supporting Files */,
-				8359A95014E9554C00FBA59F /* BandCampIS.h */,
-				8359A95114E9554C00FBA59F /* BandCampIS.m */,
-				8359A98A14EA97F400FBA59F /* BandCampAPI.h */,
-				8359A98B14EA97F400FBA59F /* BandCampAPI.m */,
-				8359A98E14EA98C000FBA59F /* NSArray+Map.h */,
-				8359A98F14EA98C000FBA59F /* NSArray+Map.m */,
 			);
 			path = IncrementalStoreTest;
 			sourceTree = "<group>";
@@ -187,13 +183,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8359A93F14E9551200FBA59F /* IncrementalStoreTestTests */ = {
+		8359A93F14E9551200FBA59F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8359A94514E9551200FBA59F /* IncrementalStoreTestTests.h */,
 				8359A94614E9551200FBA59F /* IncrementalStoreTestTests.m */,
 				8359A94014E9551200FBA59F /* Supporting Files */,
 			);
+			name = Tests;
 			path = IncrementalStoreTestTests;
 			sourceTree = "<group>";
 		};
@@ -218,6 +215,28 @@
 				8359A97E14EA767600FBA59F /* Album.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8359A99214EBD60A00FBA59F /* BandCamp API */ = {
+			isa = PBXGroup;
+			children = (
+				8359A95014E9554C00FBA59F /* BandCampIS.h */,
+				8359A95114E9554C00FBA59F /* BandCampIS.m */,
+				8359A98A14EA97F400FBA59F /* BandCampAPI.h */,
+				8359A98B14EA97F400FBA59F /* BandCampAPI.m */,
+			);
+			name = "BandCamp API";
+			path = IncrementalStoreTest;
+			sourceTree = "<group>";
+		};
+		8359A99314EBD62500FBA59F /* Helper Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8359A98E14EA98C000FBA59F /* NSArray+Map.h */,
+				8359A98F14EA98C000FBA59F /* NSArray+Map.m */,
+			);
+			name = "Helper Categories";
+			path = IncrementalStoreTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
