@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8303EC5A14EFF8D800387629 /* BandCampAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8303EC5914EFF8D800387629 /* BandCampAPITests.m */; };
 		8359A90E14E9551200FBA59F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A90D14E9551200FBA59F /* UIKit.framework */; };
 		8359A91014E9551200FBA59F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A90F14E9551200FBA59F /* Foundation.framework */; };
 		8359A91214E9551200FBA59F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A91114E9551200FBA59F /* CoreGraphics.framework */; };
@@ -34,9 +35,7 @@
 		8359A98314EA767600FBA59F /* Band.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98214EA767600FBA59F /* Band.m */; };
 		8359A98714EA767600FBA59F /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98614EA767600FBA59F /* Track.m */; };
 		8359A98C14EA97F400FBA59F /* BandCampAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98B14EA97F400FBA59F /* BandCampAPI.m */; };
-		8359A98D14EA97F400FBA59F /* BandCampAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98B14EA97F400FBA59F /* BandCampAPI.m */; };
 		8359A99014EA98C000FBA59F /* NSArray+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98F14EA98C000FBA59F /* NSArray+Map.m */; };
-		8359A99114EA98C000FBA59F /* NSArray+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98F14EA98C000FBA59F /* NSArray+Map.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8303EC5814EFF8D800387629 /* BandCampAPITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandCampAPITests.h; sourceTree = "<group>"; };
+		8303EC5914EFF8D800387629 /* BandCampAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandCampAPITests.m; sourceTree = "<group>"; };
 		8359A90914E9551200FBA59F /* IncrementalStoreTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IncrementalStoreTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8359A90D14E9551200FBA59F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8359A90F14E9551200FBA59F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +189,8 @@
 			children = (
 				8359A94514E9551200FBA59F /* IncrementalStoreTestTests.h */,
 				8359A94614E9551200FBA59F /* IncrementalStoreTestTests.m */,
+				8303EC5814EFF8D800387629 /* BandCampAPITests.h */,
+				8303EC5914EFF8D800387629 /* BandCampAPITests.m */,
 				8359A94014E9551200FBA59F /* Supporting Files */,
 			);
 			name = Tests;
@@ -370,8 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8359A94714E9551200FBA59F /* IncrementalStoreTestTests.m in Sources */,
-				8359A98D14EA97F400FBA59F /* BandCampAPI.m in Sources */,
-				8359A99114EA98C000FBA59F /* NSArray+Map.m in Sources */,
+				8303EC5A14EFF8D800387629 /* BandCampAPITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +543,7 @@
 				8359A94C14E9551200FBA59F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8359A94D14E9551200FBA59F /* Build configuration list for PBXNativeTarget "IncrementalStoreTestTests" */ = {
 			isa = XCConfigurationList;
@@ -549,6 +552,7 @@
 				8359A94F14E9551200FBA59F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
