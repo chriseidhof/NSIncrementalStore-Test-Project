@@ -43,7 +43,9 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
     return YES;
 }
 
-- (id)executeRequest:(NSPersistentStoreRequest*)request withContext:(NSManagedObjectContext*)context error:(NSError**)error {
+- (id)executeRequest:(NSPersistentStoreRequest*)request 
+         withContext:(NSManagedObjectContext*)context 
+               error:(NSError**)error {
     if(request.requestType == NSFetchRequestType)
     {
         NSFetchRequest *fetchRequest = (NSFetchRequest*)request;
@@ -56,15 +58,20 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
     return nil;
 } 
 
-- (id)fetchObjects:(NSFetchRequest*)request withContext:(NSManagedObjectContext*)context {
-    NSArray* items = [BandCampAPI apiRequestEntitiesWithName:request.entityName predicate:request.predicate];
+- (id)fetchObjects:(NSFetchRequest*)request 
+       withContext:(NSManagedObjectContext*)context {
+    NSArray* items = [BandCampAPI apiRequestEntitiesWithName:request.entityName 
+                                                   predicate:request.predicate];
     return [items map:^(id item) {
-        NSManagedObjectID* oid = [self objectIdForNewObjectOfEntity:request.entity cacheValues:item];
+        NSManagedObjectID* oid = [self objectIdForNewObjectOfEntity:request.entity 
+                                                        cacheValues:item];
         return [context objectWithID:oid];
     }];
 }
 
-- (NSIncrementalStoreNode*)newValuesForObjectWithID:(NSManagedObjectID*)objectID withContext:(NSManagedObjectContext*)context error:(NSError**)error {
+- (NSIncrementalStoreNode*)newValuesForObjectWithID:(NSManagedObjectID*)objectID 
+                                        withContext:(NSManagedObjectContext*)context
+                                              error:(NSError**)error {
     NSDictionary* values = [cache objectForKey:objectID];
     NSIncrementalStoreNode* node = 
         [[NSIncrementalStoreNode alloc] initWithObjectID:objectID
@@ -79,14 +86,12 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
 }
 
 - (id)newValueForRelationship:(NSRelationshipDescription*)relationship forObjectWithID:(NSManagedObjectID*)objectID withContext:(NSManagedObjectContext*)context error:(NSError**)error {
-    NSString* entityName = relationship.entity.name;
-    BOOL isDiscography = [entityName isEqualToString:@"Band"]  && [relationship.name isEqualToString:@"discography"];
-    BOOL isAlbumTracks = [entityName isEqualToString:@"Album"] && [relationship.name isEqualToString:@"tracks"];
-    
-    if(isDiscography) {
-        return [self fetchDiscographyForBandWithId:objectID albumEntity:relationship.destinationEntity];
-    } else if(isAlbumTracks) {
-        return [self fetchTracksForAlbumWithId:objectID trackEntity:relationship.destinationEntity];
+    if([relationship.name isEqualToString:@"discography"]) {
+        return [self fetchDiscographyForBandWithId:objectID 
+                                       albumEntity:relationship.destinationEntity];
+    } else if([relationship.name isEqualToString:@"tracks"]) {
+        return [self fetchTracksForAlbumWithId:objectID 
+                                   trackEntity:relationship.destinationEntity];
     }
     NSLog(@"unknown relatioship: %@", relationship);
     return nil;
@@ -94,7 +99,8 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
 
 #pragma mark Relationship fetching
 
-- (NSArray*)fetchDiscographyForBandWithId:(NSManagedObjectID*)objectID albumEntity:(NSEntityDescription*)entity {
+- (NSArray*)fetchDiscographyForBandWithId:(NSManagedObjectID*)objectID
+                              albumEntity:(NSEntityDescription*)entity {
     id bandId = [self referenceObjectForObjectID:objectID];            
     NSArray* discographyData = [BandCampAPI apiDiscographyForBandWithId:bandId];
     return [discographyData map:^(id album) {
@@ -115,10 +121,11 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
 #pragma mark Caching
 
 - (NSManagedObjectID*)objectIdForNewObjectOfEntity:(NSEntityDescription*)entityDescription
-                                            cacheValues:(NSDictionary*)values {
+                                       cacheValues:(NSDictionary*)values {
     NSString* nativeKey = [self nativeKeyForEntityName:entityDescription.name];
     id referenceId = [values objectForKey:nativeKey];
-    NSManagedObjectID *objectId = [self newObjectIDForEntity:entityDescription referenceObject:referenceId];
+    NSManagedObjectID *objectId = [self newObjectIDForEntity:entityDescription 
+                                             referenceObject:referenceId];
     [cache setObject:values forKey:objectId];
     return objectId;
 }

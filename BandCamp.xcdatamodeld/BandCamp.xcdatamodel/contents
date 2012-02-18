@@ -21,8 +21,8 @@
         <attribute name="track_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Band" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="Track" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Album" positionX="171" positionY="144" width="128" height="90"/>
+        <element name="Band" positionX="-0" positionY="144" width="128" height="135"/>
+        <element name="Track" positionX="349" positionY="144" width="128" height="90"/>
     </elements>
 </model>
