@@ -122,7 +122,6 @@
 		8359A8FE14E9551100FBA59F = {
 			isa = PBXGroup;
 			children = (
-				8359A96614E95A6600FBA59F /* CoreData.framework */,
 				8359A99314EBD62500FBA59F /* Helper Categories */,
 				8359A99214EBD60A00FBA59F /* BandCamp API */,
 				8359A98914EA768800FBA59F /* Model */,
@@ -145,6 +144,7 @@
 		8359A90C14E9551200FBA59F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8359A96614E95A6600FBA59F /* CoreData.framework */,
 				8359A90D14E9551200FBA59F /* UIKit.framework */,
 				8359A90F14E9551200FBA59F /* Foundation.framework */,
 				8359A91114E9551200FBA59F /* CoreGraphics.framework */,
