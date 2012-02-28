@@ -38,8 +38,6 @@
     }
     NSManagedObjectModel* model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
 
-
-    [NSPersistentStoreCoordinator registerStoreClass:[BandCampIS class] forStoreType:BANDCAMP_STORE_TYPE];
     NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     NSError* err = nil;
     [coordinator addPersistentStoreWithType:[BandCampIS type] configuration:nil URL:nil options:nil error:&err];

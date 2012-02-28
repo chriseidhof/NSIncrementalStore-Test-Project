@@ -26,6 +26,10 @@
 
 @implementation BandCampIS
 
++ (void)initialize {
+    [NSPersistentStoreCoordinator registerStoreClass:[BandCampIS class] forStoreType:[BandCampIS type]];
+}
+
 + (NSString*)type {
     return @"BandCampIS";
 }
