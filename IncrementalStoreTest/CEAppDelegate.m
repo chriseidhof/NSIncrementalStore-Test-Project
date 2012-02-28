@@ -12,10 +12,25 @@
 
 #import "CESecondViewController.h"
 
-@implementation CEAppDelegate
+@implementation CEAppDelegate {
+    NSPersistentStoreCoordinator* persistentstoreCoordinator;
+}
 
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
+
+- (NSPersistentStoreCoordinator*)persistentstoreCoordinator {
+    if (persistentstoreCoordinator) {
+        return persistentstoreCoordinator;
+    }
+    persistentstoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[BandCampIS model]];
+    NSError* err = nil;
+    BandCampIS *store = [coordinator addPersistentStoreWithType:[BandCampIS type] configuration:nil URL:nil options:nil error:&err];
+    if (store == nil) {
+        NSLog(@"Something went wrong adding a BandCampIS store: %@", err);
+    }
+    return persistentstoreCoordinator;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
