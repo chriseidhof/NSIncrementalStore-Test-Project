@@ -8,8 +8,11 @@
 
 #import <CoreData/CoreData.h>
 
-extern NSString* BANDCAMP_STORE_TYPE;
-
 @interface BandCampIS : NSIncrementalStore
+
+/**
+ *  @returns The type identifier of BandCampIS stores
+ */
++ (NSString*)type;
 
 @end

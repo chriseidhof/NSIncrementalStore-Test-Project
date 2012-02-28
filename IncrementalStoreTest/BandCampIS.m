@@ -10,8 +10,6 @@
 #import "BandCampAPI.h"
 #import "NSArray+Map.h"
 
-NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
-
 @interface BandCampIS () {
     NSMutableDictionary* cache;
 }
@@ -28,6 +26,10 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
 
 @implementation BandCampIS
 
++ (NSString*)type {
+    return @"BandCampIS";
+}
+
 - (id)initWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator*)root configurationName:(NSString*)name URL:(NSURL*)url options:(NSDictionary *)options {
     self = [super initWithPersistentStoreCoordinator:root configurationName:name URL:url options:options];
     if (self) {
@@ -39,7 +41,7 @@ NSString *BANDCAMP_STORE_TYPE = @"BandCampIS";
 - (BOOL)loadMetadata:(NSError**)error {
     // TODO: find out how to generate the UUID? Does it matter?
     NSString* uuid = [[NSProcessInfo processInfo] globallyUniqueString];
-    [self setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:BANDCAMP_STORE_TYPE, NSStoreTypeKey, uuid, NSStoreUUIDKey, nil]];
+    [self setMetadata:[NSDictionary dictionaryWithObjectsAndKeys:[BandCampIS type], NSStoreTypeKey, uuid, NSStoreUUIDKey, nil]];
     return YES;
 }
 
