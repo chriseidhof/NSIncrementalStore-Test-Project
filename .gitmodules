@@ -1,0 +1,3 @@
+[submodule "IncrementalStoreTestTests/NSURLConnectionVCR"]
+	path = IncrementalStoreTestTests/NSURLConnectionVCR
+	url = git@bitbucket.org:martijnthe/nsurlconnectionvcr.git
