@@ -15,4 +15,9 @@
  */
 + (NSString*)type;
 
+/**
+ *	@returns The model for the managed objects in a BandCampIS store
+ */
++ (NSManagedObjectModel*)model;
+
 @end

@@ -28,17 +28,7 @@
     NSError* error = nil;
     STAssertTrue([NSURLConnectionVCR startVCRWithPath:@"IncrementalStoreTestTests/Fixtures/VCRTapes" error:&error], @"VCR failed to start: %@", error);
     
-    NSURL *modelURL;
-    if ([[[NSBundle mainBundle] executablePath] rangeOfString:@"otest"].length != 0) {
-        // Test bundle is run headless, find model inside the octest bundle:
-        modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"BandCamp" withExtension:@"momd"];
-    } else {
-        // The test bundle is injected into iPhone app, find model there:
-        modelURL = [[NSBundle mainBundle] URLForResource:@"BandCamp" withExtension:@"momd"];
-    }
-    NSManagedObjectModel* model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-
-    NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[BandCampIS model]];
     NSError* err = nil;
     [coordinator addPersistentStoreWithType:[BandCampIS type] configuration:nil URL:nil options:nil error:&err];
     moc = [[NSManagedObjectContext alloc] init];

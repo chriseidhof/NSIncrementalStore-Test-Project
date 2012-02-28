@@ -34,6 +34,18 @@
     return @"BandCampIS";
 }
 
++ (NSManagedObjectModel*)model {
+    NSURL *modelURL;
+    if ([[[NSBundle mainBundle] executablePath] rangeOfString:@"otest"].length != 0) {
+        // Test bundle is run headless, find model inside the octest bundle:
+        modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"BandCamp" withExtension:@"momd"];
+    } else {
+        // The test bundle is injected into iPhone app, find model there:
+        modelURL = [[NSBundle mainBundle] URLForResource:@"BandCamp" withExtension:@"momd"];
+    }
+    return [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+}
+
 - (id)initWithPersistentStoreCoordinator:(NSPersistentStoreCoordinator*)root configurationName:(NSString*)name URL:(NSURL*)url options:(NSDictionary *)options {
     self = [super initWithPersistentStoreCoordinator:root configurationName:name URL:url options:options];
     if (self) {
