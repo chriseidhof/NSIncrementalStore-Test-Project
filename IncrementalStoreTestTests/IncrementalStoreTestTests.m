@@ -11,6 +11,7 @@
 #import "Band.h"
 #import "Album.h"
 #import "Track.h"
+#import "NSURLConnectionVCR.h"
 
 @interface IncrementalStoreTestTests () {
  NSManagedObjectContext* moc;   
@@ -24,10 +25,20 @@
 {
     [super setUp];
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"BandCamp" withExtension:@"momd"];
+    NSError* error = nil;
+    STAssertTrue([NSURLConnectionVCR startVCRWithPath:@"IncrementalStoreTestTests/Fixtures/VCRTapes" error:&error], @"VCR failed to start: %@", error);
+    
+    NSURL *modelURL;
+    if ([[[NSBundle mainBundle] executablePath] rangeOfString:@"otest"].length != 0) {
+        // Test bundle is run headless, find model inside the octest bundle:
+        modelURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"BandCamp" withExtension:@"momd"];
+    } else {
+        // The test bundle is injected into iPhone app, find model there:
+        modelURL = [[NSBundle mainBundle] URLForResource:@"BandCamp" withExtension:@"momd"];
+    }
     NSManagedObjectModel* model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
 
-    
+
     [NSPersistentStoreCoordinator registerStoreClass:[BandCampIS class] forStoreType:BANDCAMP_STORE_TYPE];
     NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     NSError* err = nil;
@@ -38,6 +49,9 @@
 
 - (void)tearDown
 {
+    NSError* error = nil;
+    STAssertTrue([NSURLConnectionVCR stopVCRWithError:&error], @"VCR failed to stop: %@", error);
+
     [super tearDown];
 }
 

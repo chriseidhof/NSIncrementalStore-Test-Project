@@ -65,7 +65,7 @@
         searchURLString = [searchURLString stringByAppendingString:queryPart];
     }
     NSURL* searchURL = [NSURL URLWithString:searchURLString];
-    NSData* data = [NSData dataWithContentsOfURL:searchURL];
+    NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:searchURL] returningResponse:nil error:nil];
     NSDictionary* response = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
     if([method isEqualToString:@"search"]) {
         return [response objectForKey:@"results"];
@@ -76,7 +76,8 @@
 + (NSArray*)apiDiscographyForBandWithId:(NSString*)bandId {
     // todo cache?
     NSString* searchURLString = [NSString stringWithFormat:@"http://api.bandcamp.com/api/band/3/discography?key=snaefellsjokull&band_id=%@", bandId];
-    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:searchURLString]];
+    NSURL* searchURL = [NSURL URLWithString:searchURLString];
+    NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:searchURL] returningResponse:nil error:nil];
     NSDictionary* discography = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
     return [discography objectForKey:@"discography"];
 }

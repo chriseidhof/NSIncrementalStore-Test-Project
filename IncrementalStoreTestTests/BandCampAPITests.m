@@ -8,8 +8,23 @@
 
 #import "BandCampAPITests.h"
 #import "BandCampAPI.h"
+#import "NSURLConnectionVCR.h"
 
 @implementation BandCampAPITests
+
+- (void)setUp {
+    [super setUp];
+    
+    NSError* error = nil;
+    STAssertTrue([NSURLConnectionVCR startVCRWithPath:@"IncrementalStoreTestTests/Fixtures/VCRTapes" error:&error], @"VCR failed to start: %@", error);
+}
+
+- (void)tearDown {
+    NSError* error = nil;
+    STAssertTrue([NSURLConnectionVCR stopVCRWithError:&error], @"VCR failed to stop: %@", error);
+    
+    [super tearDown];
+}
 
 - (void)testFetchBandByName
 {
