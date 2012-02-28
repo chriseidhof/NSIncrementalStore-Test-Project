@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CEFirstViewController : UIViewController
-
+@interface CEFirstViewController : UITableViewController
+@property (nonatomic, readwrite, strong) NSManagedObjectContext* moc;
 @end
