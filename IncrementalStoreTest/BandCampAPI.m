@@ -55,6 +55,39 @@
     return 1;
 }
 
++ (id)deNullify:(id)object {
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary* dict = [object isKindOfClass:[NSMutableDictionary class]] ? (NSMutableDictionary*)object : [object mutableCopy];
+        NSSet *nullSet = [dict keysOfEntriesWithOptions:NSEnumerationConcurrent passingTest:^BOOL(id key, id obj, BOOL *stop) {
+            return [obj isEqual:[NSNull null]] ? YES : NO;
+        }];
+        [dict removeObjectsForKeys:[nullSet allObjects]];
+        [dict enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id key, id obj, BOOL *stop) {
+            if ([obj conformsToProtocol:@protocol(NSFastEnumeration)]) {
+                [self deNullify:obj];
+            }
+        }];
+        return dict;
+    } else if ([object isKindOfClass:[NSArray class]]) {
+        NSMutableArray* array = [object isKindOfClass:[NSMutableArray class]] ? (NSMutableArray*)object : [object mutableCopy];
+        [array removeObjectIdenticalTo:[NSNull null]];
+        [array enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj conformsToProtocol:@protocol(NSFastEnumeration)]) {
+                [self deNullify:obj];
+            }
+        }];
+        return array;
+    } else {
+        return object;
+    }
+}
+
++ (id)sanitizedJSONWithData:(NSData*)data error:(NSError *__autoreleasing*)error {
+    // Core Data chokes on the NSNull objects that NSJSONSerialization might return, so we need to sanitize the results:
+    id result = [self deNullify:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:error]];
+    return [result copy]; // return immutable
+}
+
 + (NSArray*)apiRequestEntitiesWithName:(NSString*)name predicate:(NSPredicate*)predicate {
     NSString* lowercaseName = [name lowercaseString];
     NSInteger version = [self apiVersionForEntityName:name];
@@ -66,7 +99,7 @@
     }
     NSURL* searchURL = [NSURL URLWithString:searchURLString];
     NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:searchURL] returningResponse:nil error:nil];
-    NSDictionary* response = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    NSDictionary* response = [self sanitizedJSONWithData:data error:NULL];
     if([method isEqualToString:@"search"]) {
         return [response objectForKey:@"results"];
     }
@@ -74,11 +107,11 @@
 }
 
 + (NSArray*)apiDiscographyForBandWithId:(NSString*)bandId {
-    // todo cache?
+    // todo cache? -> perhaps use NSURLCache?
     NSString* searchURLString = [NSString stringWithFormat:@"http://api.bandcamp.com/api/band/3/discography?key=snaefellsjokull&band_id=%@", bandId];
     NSURL* searchURL = [NSURL URLWithString:searchURLString];
     NSData* data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:searchURL] returningResponse:nil error:nil];
-    NSDictionary* discography = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    NSDictionary* discography = [self sanitizedJSONWithData:data error:NULL];
     return [discography objectForKey:@"discography"];
 }
 
