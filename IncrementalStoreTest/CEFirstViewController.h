@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CEFirstViewController : UIViewController
+@interface CEFirstViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@property (nonatomic, readwrite, strong) NSManagedObjectContext *moc;
+
+- (void)setNeedsUpdateFetchedResultsController;
 
 @end

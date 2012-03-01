@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1415" systemVersion="12A128p" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Album" representedClassName="Album" syncable="YES">
         <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="large_art_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" syncable="YES"/>
+        <relationship name="band" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Band" inverseName="discography" inverseEntity="Band" syncable="YES"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="album" inverseEntity="Track" syncable="YES"/>
     </entity>
     <entity name="Band" representedClassName="Band" syncable="YES">
         <attribute name="band_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -12,17 +13,18 @@
         <attribute name="offsite_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subdomain" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="discography" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" syncable="YES"/>
+        <relationship name="discography" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="band" inverseEntity="Album" syncable="YES"/>
     </entity>
     <entity name="Track" representedClassName="Track" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="track_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="album" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="tracks" inverseEntity="Album" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="171" positionY="144" width="128" height="90"/>
+        <element name="Album" positionX="171" positionY="144" width="128" height="120"/>
         <element name="Band" positionX="-0" positionY="144" width="128" height="135"/>
-        <element name="Track" positionX="349" positionY="144" width="128" height="90"/>
+        <element name="Track" positionX="349" positionY="144" width="128" height="120"/>
     </elements>
 </model>

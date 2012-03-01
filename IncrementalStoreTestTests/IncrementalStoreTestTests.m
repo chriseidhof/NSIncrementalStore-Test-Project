@@ -11,6 +11,10 @@
 #import "Band.h"
 #import "Album.h"
 #import "Track.h"
+#import "NSURLConnectionVCR.h"
+
+#define QUOTE(str) #str
+#define EXPAND_AND_QUOTE(str) QUOTE(str)
 
 @interface IncrementalStoreTestTests () {
  NSManagedObjectContext* moc;   
@@ -24,20 +28,22 @@
 {
     [super setUp];
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"BandCamp" withExtension:@"momd"];
-    NSManagedObjectModel* model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-
+    NSError* error = nil;
+    NSString* path = [NSString stringWithFormat:@"%s/IncrementalStoreTestTests/Fixtures/VCRTapes", EXPAND_AND_QUOTE(SRCROOT)];
+    STAssertTrue([NSURLConnectionVCR startVCRWithPath:path error:&error], @"VCR failed to start: %@", error);
     
-    [NSPersistentStoreCoordinator registerStoreClass:[BandCampIS class] forStoreType:BANDCAMP_STORE_TYPE];
-    NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    NSPersistentStoreCoordinator* coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[BandCampIS model]];
     NSError* err = nil;
-    [coordinator addPersistentStoreWithType:BANDCAMP_STORE_TYPE configuration:nil URL:nil options:nil error:&err];
+    [coordinator addPersistentStoreWithType:[BandCampIS type] configuration:nil URL:nil options:nil error:&err];
     moc = [[NSManagedObjectContext alloc] init];
     [moc setPersistentStoreCoordinator:coordinator];
 }
 
 - (void)tearDown
 {
+    NSError* error = nil;
+    STAssertTrue([NSURLConnectionVCR stopVCRWithError:&error], @"VCR failed to stop: %@", error);
+
     [super tearDown];
 }
 
