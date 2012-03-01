@@ -152,4 +152,19 @@
     return [[entityName lowercaseString] stringByAppendingString:@"_id"];
 }
 
+#pragma mark MOC registration
+
+- (void)managedObjectContextDidRegisterObjectsWithIDs:(NSArray*)objectIDs {
+    [super managedObjectContextDidRegisterObjectsWithIDs:objectIDs];
+    NSLog(@"__register %@: %@", [NSThread isMainThread] ? @"(mainThread)" : @"(bgThread)", objectIDs);
+}
+
+// Inform the store that the objects with ids in objectIDs are no longer in use in a client NSManagedObjectContext
+- (void)managedObjectContextDidUnregisterObjectsWithIDs:(NSArray*)objectIDs {
+    [super managedObjectContextDidUnregisterObjectsWithIDs:objectIDs];
+    NSLog(@"UNregister %@: %@", [NSThread isMainThread] ? @"(mainThread)" : @"(bgThread)", objectIDs);
+
+}
+
+
 @end
