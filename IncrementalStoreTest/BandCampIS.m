@@ -19,6 +19,7 @@
                                        cacheValues:(NSDictionary*)values;
 - (NSString*)nativeKeyForEntityName:(NSString*)entityName;
 - (id)fetchObjects:(NSFetchRequest*)request withContext:(NSManagedObjectContext*)context;
+- (id)fetchObjectIDs:(NSFetchRequest*)request withContext:(NSManagedObjectContext*)context;
 - (NSArray*)fetchDiscographyForBandWithId:(NSManagedObjectID*)objectID albumEntity:(NSEntityDescription*)entity;
 - (NSArray*)fetchTracksForAlbumWithId:(NSManagedObjectID*)objectID trackEntity:(NSEntityDescription*)entity;
 
