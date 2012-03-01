@@ -152,6 +152,41 @@
     return [[entityName lowercaseString] stringByAppendingString:@"_id"];
 }
 
+- (NSArray*)objectIdsInCacheMatchingFetchRequest:(NSFetchRequest*)fetchRequest {
+    NSMutableArray *matchingIds = [NSMutableArray arrayWithCapacity:[cache count]];
+    [cache enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(NSManagedObjectID *objectID, NSDictionary *cachedValues, BOOL *stop) {
+        if ([[objectID entity] isEqual:fetchRequest.entity]) {
+            if ([fetchRequest.predicate evaluateWithObject:cachedValues]) {
+                [matchingIds addObject:objectID];
+            }
+        }
+    }];
+    return [NSArray arrayWithArray:matchingIds];
+}
+
+- (id)executeRequestCached:(NSPersistentStoreRequest*)request withContext:(NSManagedObjectContext*)context error:(NSError**)error {
+    if(request.requestType == NSFetchRequestType) {
+        NSFetchRequest *fetchRequest = (NSFetchRequest*)request;
+        switch (fetchRequest.resultType) {
+            case NSManagedObjectResultType:
+                // todo: handle stuff like sorting, limiting, etc. 
+                return [[self objectIdsInCacheMatchingFetchRequest:fetchRequest] map:^id(NSManagedObjectID* objectID) {
+                    return [context existingObjectWithID:objectID error:nil];
+                }];
+                
+            case NSManagedObjectIDResultType:
+                // todo: handle stuff like sorting, limiting, etc. 
+                return [self objectIdsInCacheMatchingFetchRequest:fetchRequest];
+        }
+    }
+    
+    NSLog(@"Un-implemented method for request: %@", request);
+    if (error) {
+        // *error = ... 
+    }
+    return nil;
+}
+
 #pragma mark MOC registration
 
 - (void)managedObjectContextDidRegisterObjectsWithIDs:(NSArray*)objectIDs {
