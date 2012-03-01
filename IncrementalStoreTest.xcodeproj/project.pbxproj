@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		100780FF14FCF346009362E5 /* NSURLConnectionVCR.m in Sources */ = {isa = PBXBuildFile; fileRef = 100780FE14FCF346009362E5 /* NSURLConnectionVCR.m */; };
 		1007810014FCF346009362E5 /* NSURLConnectionVCR.m in Sources */ = {isa = PBXBuildFile; fileRef = 100780FE14FCF346009362E5 /* NSURLConnectionVCR.m */; };
+		102AADC614FF695200ABCA98 /* NSIncrementalStore+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 102AADC514FF695200ABCA98 /* NSIncrementalStore+Async.m */; };
+		102AADC714FF695200ABCA98 /* NSIncrementalStore+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 102AADC514FF695200ABCA98 /* NSIncrementalStore+Async.m */; };
 		10852A7714F6CFCE0004895D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8359A93914E9551200FBA59F /* SenTestingKit.framework */; };
 		10852A7914F6CFCE0004895D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10852A7814F6CFCE0004895D /* Cocoa.framework */; };
 		10852A8C14F6D07C0004895D /* NSArray+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359A98F14EA98C000FBA59F /* NSArray+Map.m */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		100780FD14FCF346009362E5 /* NSURLConnectionVCR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSURLConnectionVCR.h; path = NSURLConnectionVCR/NSURLConnectionVCR/NSURLConnectionVCR.h; sourceTree = "<group>"; };
 		100780FE14FCF346009362E5 /* NSURLConnectionVCR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSURLConnectionVCR.m; path = NSURLConnectionVCR/NSURLConnectionVCR/NSURLConnectionVCR.m; sourceTree = "<group>"; };
+		102AADC414FF695200ABCA98 /* NSIncrementalStore+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIncrementalStore+Async.h"; sourceTree = "<group>"; };
+		102AADC514FF695200ABCA98 /* NSIncrementalStore+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIncrementalStore+Async.m"; sourceTree = "<group>"; };
 		10852A7614F6CFCE0004895D /* IncrementalStoreTestsHeadless.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IncrementalStoreTestsHeadless.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10852A7814F6CFCE0004895D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		10852A7B14F6CFCE0004895D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -271,6 +275,8 @@
 				8359A95114E9554C00FBA59F /* BandCampIS.m */,
 				8359A98A14EA97F400FBA59F /* BandCampAPI.h */,
 				8359A98B14EA97F400FBA59F /* BandCampAPI.m */,
+				102AADC414FF695200ABCA98 /* NSIncrementalStore+Async.h */,
+				102AADC514FF695200ABCA98 /* NSIncrementalStore+Async.m */,
 			);
 			name = "BandCamp API";
 			path = IncrementalStoreTest;
@@ -447,6 +453,7 @@
 				10852A9314F6D07C0004895D /* BandCampAPITests.m in Sources */,
 				10852A9414F6D0810004895D /* BandCamp.xcdatamodeld in Sources */,
 				1007810014FCF346009362E5 /* NSURLConnectionVCR.m in Sources */,
+				102AADC714FF695200ABCA98 /* NSIncrementalStore+Async.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +472,7 @@
 				8359A98714EA767600FBA59F /* Track.m in Sources */,
 				8359A98C14EA97F400FBA59F /* BandCampAPI.m in Sources */,
 				8359A99014EA98C000FBA59F /* NSArray+Map.m in Sources */,
+				102AADC614FF695200ABCA98 /* NSIncrementalStore+Async.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
