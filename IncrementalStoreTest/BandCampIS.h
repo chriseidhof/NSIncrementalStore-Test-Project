@@ -7,8 +7,9 @@
 //
 
 #import <CoreData/CoreData.h>
+#import "NSIncrementalStore+Async.h"
 
-@interface BandCampIS : NSIncrementalStore
+@interface BandCampIS : NSIncrementalStore <NSIncrementalStoreExecuteRequestCached, NSIncrementalStoreExecuteRequestBlocking>
 
 /**
  *  @returns The type identifier of BandCampIS stores

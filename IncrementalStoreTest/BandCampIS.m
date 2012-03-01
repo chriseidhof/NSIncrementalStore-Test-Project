@@ -61,29 +61,43 @@
     return YES;
 }
 
+- (id)executeRequestBlocking:(NSPersistentStoreRequest*)request 
+         withContext:(NSManagedObjectContext*)context 
+               error:(NSError**)error {
+    NSLog(@"Executing blocking request ..");
+    
+    if(request.requestType == NSFetchRequestType) {
+        NSFetchRequest *fetchRequest = (NSFetchRequest*)request;
+        switch (fetchRequest.resultType) {
+            case NSManagedObjectResultType:
+                return [self fetchObjects:fetchRequest withContext:context];
+                
+            case NSManagedObjectIDResultType:
+                return [self fetchObjectIDs:fetchRequest withContext:context];
+        }
+    }
+
+    NSLog(@"unimplemented request: %@", request);
+    return nil;
+}
+
 - (id)executeRequest:(NSPersistentStoreRequest*)request 
          withContext:(NSManagedObjectContext*)context 
                error:(NSError**)error {
-    if(request.requestType == NSFetchRequestType)
-    {
-        NSFetchRequest *fetchRequest = (NSFetchRequest*)request;
-        if(fetchRequest.resultType == NSManagedObjectResultType) {
-            return [self fetchObjects:fetchRequest withContext:context];
-        }
-    }
-    
-    NSLog(@"unimplemented request: %@", request);    
-    return nil;
-} 
+    return [self executeRequestAsyncAndSync:request withContext:context error:error];
+}
 
-- (id)fetchObjects:(NSFetchRequest*)request 
-       withContext:(NSManagedObjectContext*)context {
-    NSArray* items = [BandCampAPI apiRequestEntitiesWithName:request.entityName 
-                                                   predicate:request.predicate];
+- (id)fetchObjectIDs:(NSFetchRequest*)request withContext:(NSManagedObjectContext*)context {
+    NSArray* items = [BandCampAPI apiRequestEntitiesWithName:request.entityName predicate:request.predicate];
     return [items map:^(id item) {
-        NSManagedObjectID* oid = [self objectIdForNewObjectOfEntity:request.entity 
-                                                        cacheValues:item];
-        return [context objectWithID:oid];
+        return [self objectIdForNewObjectOfEntity:request.entity cacheValues:item];
+    }];
+}
+
+- (id)fetchObjects:(NSFetchRequest*)request withContext:(NSManagedObjectContext*)context {
+    NSArray* items = [self fetchObjectIDs:request withContext:context];
+    return [items map:^(id item) {
+        return [context objectWithID:item];
     }];
 }
 
