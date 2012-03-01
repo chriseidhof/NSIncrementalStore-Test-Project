@@ -10,13 +10,17 @@
 #import "BandCampAPI.h"
 #import "NSURLConnectionVCR.h"
 
+#define QUOTE(str) #str
+#define EXPAND_AND_QUOTE(str) QUOTE(str)
+
 @implementation BandCampAPITests
 
 - (void)setUp {
     [super setUp];
     
     NSError* error = nil;
-    STAssertTrue([NSURLConnectionVCR startVCRWithPath:@"IncrementalStoreTestTests/Fixtures/VCRTapes" error:&error], @"VCR failed to start: %@", error);
+    NSString* path = [NSString stringWithFormat:@"%s/IncrementalStoreTestTests/Fixtures/VCRTapes", EXPAND_AND_QUOTE(SRCROOT)];
+    STAssertTrue([NSURLConnectionVCR startVCRWithPath:path error:&error], @"VCR failed to start: %@", error);
 }
 
 - (void)tearDown {
