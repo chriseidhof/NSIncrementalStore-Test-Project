@@ -51,6 +51,7 @@ NSString* NSAsyncIncrementalStoreErrorDomain = @"nl.martijnthe.asyncincrementals
         NSPersistentStoreRequest<NSAsyncIncrementalStoreRequest>* asyncRequest = (NSPersistentStoreRequest<NSAsyncIncrementalStoreRequest>*)request;
         
         // Keep a reference to the original queue, we want to run the handler ('delegate') blocks on this queue.
+        // TODO: be able to specify callerQueue
         NSOperationQueue* callerQueue = [NSOperationQueue currentQueue];
         
         if (asyncRequest.isCancelled) {
@@ -127,6 +128,8 @@ NSString* NSAsyncIncrementalStoreErrorDomain = @"nl.martijnthe.asyncincrementals
             // Finally, run the (blocking) request:
             NSError* executeError = nil;
             NSArray* objectIDs = [(id<NSIncrementalStoreExecuteRequestBlocking>)self executeRequestBlocking:bgRequest withContext:callerMoc error:error];
+            
+            // TODO: done block meegeven aan executeRequest non-blocking??
             
             // Handle executeError:
             if (objectIDs == nil) {

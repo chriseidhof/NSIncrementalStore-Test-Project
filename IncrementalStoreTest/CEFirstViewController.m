@@ -123,6 +123,7 @@
     fetchRequest.entity = [NSEntityDescription entityForName:@"Band" inManagedObjectContext:self.moc];
     fetchRequest.predicate = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:@"name"] rightExpression:[NSExpression expressionForConstantValue:searchQuery] modifier:NSDirectPredicateModifier type:NSEqualToPredicateOperatorType options:NSDiacriticInsensitivePredicateOption | NSCaseInsensitivePredicateOption];
     fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    fetchRequest.returnsCachedResultsImmediately = YES;
     
     fetchRequest.willStartBlock = ^{
         self.navigationItem.prompt = @"Starting to load...";
