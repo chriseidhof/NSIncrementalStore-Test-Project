@@ -7,24 +7,45 @@
 //
 
 #import "CEAppDelegate.h"
-
 #import "CEFirstViewController.h"
-
 #import "CESecondViewController.h"
+#import "BandCampIS.h"
 
-@implementation CEAppDelegate
+@implementation CEAppDelegate {
+    NSPersistentStoreCoordinator* persistentstoreCoordinator;
+}
 
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 
+- (NSPersistentStoreCoordinator*)persistentstoreCoordinator {
+    if (persistentstoreCoordinator) {
+        return persistentstoreCoordinator;
+    }
+    persistentstoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[BandCampIS model]];
+    NSError* err = nil;
+    BandCampIS *store = (BandCampIS*)[persistentstoreCoordinator addPersistentStoreWithType:[BandCampIS type] configuration:nil URL:nil options:nil error:&err];
+    if (store == nil) {
+        NSLog(@"Something went wrong adding a BandCampIS store: %@", err);
+    }
+    return persistentstoreCoordinator;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[CEFirstViewController alloc] initWithNibName:@"CEFirstViewController" bundle:nil];
-    UIViewController *viewController2 = [[CESecondViewController alloc] initWithNibName:@"CESecondViewController" bundle:nil];
+    CEFirstViewController *viewController1 = [[CEFirstViewController alloc] initWithNibName:@"CEFirstViewController" bundle:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController1];
+    CESecondViewController *viewController2 = [[CESecondViewController alloc] initWithNibName:@"CESecondViewController" bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navigationController, viewController2, nil];
+    
+    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    [moc setPersistentStoreCoordinator:[self persistentstoreCoordinator]];
+    viewController1.moc = moc;
+    
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
